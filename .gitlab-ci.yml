@@ -3,7 +3,7 @@ image: node:10.15.0
 services:
   - postgres:10.5
 
-stage:
+stages:
   - build
   - test
 
