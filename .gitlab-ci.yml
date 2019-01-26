@@ -1,21 +1,26 @@
-# This file is a template, and might need editing before it works on your project.
-# Official framework image. Look for the different tagged releases at:
-# https://hub.docker.com/r/library/node/tags/
 image: node:10.15.0
 
-# Pick zero or more services to be used on all builds.
-# Only needed when using a docker container to run your tests in.
-# Check out: http://docs.gitlab.com/ce/ci/docker/using_docker_images.html#what-is-a-service
 services:
   - postgres:10.5
 
+stage:
+  - build
+  - test
+
 # This folder is cached between builds
-# http://docs.gitlab.com/ce/ci/yaml/README.html#cache
 cache:
   paths:
   - node_modules/
 
-test_async:
+before_script:
+  - psql -c 'create database user_messages_test;' -U postgres
+
+build:
+  stage: build
   script:
    - yarn install
+
+test_async:
+  stage: test
+  script:
    - yarn test
