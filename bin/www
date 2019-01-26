@@ -1,0 +1,29 @@
+const http = require('http');
+require('dotenv').config();
+
+const env = process.env.NODE_ENV;
+
+const indexRoute = env === 'production' ? '../dist' : '../src';
+const index = require(indexRoute);
+const models = require(`${indexRoute}/models`);
+const seeders = require(`${indexRoute}/seeders`);
+const { app, server } = index;
+
+const { sequelize } = models;
+const { createUserWithMessages } = seeders;
+
+const PORT = process.env.SERVER_PORT || 4000;
+
+const httpServer = http.createServer(app);
+server.installSubscriptionHandlers(httpServer);
+
+const isTest = env === 'test';
+
+sequelize.sync({ force: isTest }).then(async () => {
+  if (isTest) {
+    await createUserWithMessages(new Date());
+  }
+  httpServer.listen(PORT, () =>
+    console.log(`Apollo Server on http://localhost:${PORT}/graphql`),
+  );
+});

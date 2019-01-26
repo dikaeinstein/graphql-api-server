@@ -1,0 +1,44 @@
+{
+  "name": "graphql-api-server",
+  "version": "1.0.0",
+  "description": "A graphql api server implemented with apollo-graphql-server, express and postgres.",
+  "main": "src/index.js",
+  "repository": "https://github.com/dikaeinstein/graphql-api-server",
+  "author": "dikaeinstein",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "babel src -d dist --ignore src/tests/*.spec.js,src/tests/*.js",
+    "clean": "rm -rf dist",
+    "prebuild": "yarn clean",
+    "start": "NODE_ENV=production node bin/www",
+    "start:dev": "NODE_ENV=development nodemon --exec babel-node bin/www",
+    "test": "mocha --require @babel/register src/**/*.spec.js --exit"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.3.1",
+    "bcrypt": "^3.0.3",
+    "cors": "^2.8.5",
+    "dataloader": "^1.4.0",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "graphql": "^14.1.1",
+    "graphql-iso-date": "^3.6.1",
+    "graphql-resolvers": "^0.3.2",
+    "jsonwebtoken": "^8.4.0",
+    "pg": "^7.8.0",
+    "sequelize": "^4.42.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/register": "^7.0.0",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.9"
+  }
+}
