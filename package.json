@@ -14,7 +14,7 @@
     "heroku-postbuild": "yarn build",
     "start": "NODE_ENV=production node bin/www",
     "start:dev": "NODE_ENV=development nodemon --exec babel-node bin/www",
-    "test": "mocha --require @babel/register src/**/*.spec.js --exit"
+    "test": "mocha --require @babel/register src/**/*.spec.js -t 5000 --exit"
   },
   "dependencies": {
     "apollo-server-express": "^2.3.1",

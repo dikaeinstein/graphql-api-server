@@ -12,7 +12,7 @@ const { app, server } = index;
 const { expect } = chai;
 chai.use(chaiHttp);
 
-const PORT = process.env.SERVER_PORT || 4000;
+const PORT = process.env.PORT || 4000;
 const BASE_URL = `http://localhost:${PORT}`;
 
 const httpServer = http.createServer(app);
