@@ -12,6 +12,7 @@ const app = express();
 const server = new ApolloServer({
   typeDefs: schema,
   resolvers,
+  introspection: true,
   context: async ({ req, connection }) => {
     if (connection) {
       return { models };
