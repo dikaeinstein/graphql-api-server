@@ -1,5 +1,8 @@
 image: node:10.15.0
 
+services:
+  - postgres:10.5
+
 stages:
   - build
   - test
@@ -16,9 +19,5 @@ build:
 
 test_async:
   stage: test
-  services:
-    - postgres:10.5
-  before_script:
-    - psql -c 'create database user_messages_test;' -h postgres -U postgres
   script:
    - yarn test
