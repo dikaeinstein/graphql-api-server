@@ -1,6 +1,8 @@
 # graphql-api-server
 
-A graphql api server built with apollo-graphql-server, express and postgres.
+A graphql api server built with Nodejs, apollo-graphql-server, express and postgres.
+
+[![Build Status](https://gitlab.com/dikaeinstein/graphql-api-server/badges/master/build.svg)](https://gitlab.com/dikaeinstein/graphql-api-server)
 
 ## Installation
 
