@@ -12,9 +12,6 @@ cache:
   paths:
   - node_modules/
 
-before_script:
-  - psql -c 'create database user_messages_test;' -U postgres
-
 build:
   stage: build
   script:
@@ -22,5 +19,7 @@ build:
 
 test_async:
   stage: test
+  before_script:
+    - psql -c 'create database user_messages_test;' -h postgres -U postgres
   script:
    - yarn test
