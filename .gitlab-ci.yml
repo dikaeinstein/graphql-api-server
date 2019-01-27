@@ -2,11 +2,6 @@ image: node:10.15.0
 
 services:
   - postgres:10.5
-  
-variables:
-  POSTGRES_DB: $DATABASE_test
-  POSTGRES_USER: $DB_USERNAME
-  POSTGRES_PASSWORD: $DB_PASSWORD
 
 stages:
   - build
