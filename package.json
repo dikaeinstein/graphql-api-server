@@ -11,6 +11,7 @@
     "build": "babel src -d dist --ignore src/tests/*.spec.js,src/tests/*.js",
     "clean": "rm -rf dist",
     "prebuild": "yarn clean",
+    "heroku-postbuild": "yarn build",
     "start": "NODE_ENV=production node bin/www",
     "start:dev": "NODE_ENV=development nodemon --exec babel-node bin/www",
     "test": "mocha --require @babel/register src/**/*.spec.js --exit"
@@ -40,5 +41,9 @@
     "chai-http": "^4.2.1",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.9"
+  },
+  "engines": {
+    "yarn": "1.14.0",
+    "node": "10.15.0"
   }
 }
