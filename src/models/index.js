@@ -3,20 +3,23 @@ import 'dotenv/config';
 
 const env = process.env.NODE_ENV || 'development';
 
+const config = {
+  dialect: 'postgres',
+  define: {
+    underscored: true,
+    underscoredAll: true,
+  },
+  host: process.env.DB_HOST,
+  operatorsAliases: false,
+};
+
 const sequelize = env === 'production'
-  ? new Sequelize(process.env.DATABASE_URL)
+  ? new Sequelize(process.env.DATABASE_URL, config)
   : new Sequelize(
       process.env[`DATABASE_${env}`],
       process.env.DB_USERNAME,
       process.env.DB_PASSWORD,
-      {
-        dialect: 'postgres',
-        define: {
-          underscored: true,
-        },
-        host: process.env.DB_HOST,
-        operatorsAliases: false,
-      },
+      config,
     );
 
 const models = {
