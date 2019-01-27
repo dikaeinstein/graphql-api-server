@@ -14,6 +14,7 @@ const sequelize = env === 'production'
         define: {
           underscored: true,
         },
+        host: process.env.DB_HOST,
         operatorsAliases: false,
       },
     );
