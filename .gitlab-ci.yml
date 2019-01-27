@@ -6,6 +6,7 @@ services:
 stages:
   - build
   - test
+  - deploy
 
 # This folder is cached between builds
 cache:
@@ -21,3 +22,10 @@ test_async:
   stage: test
   script:
    - yarn test
+
+deploy to heroku:
+  stage: deploy
+  image: ruby:latest
+  script:
+    - gem install dpl
+    - dpl --provider=heroku --api-key=$HEROKU_API_KEY --app=dikaeinstein-graphql-api
